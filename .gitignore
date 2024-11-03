@@ -1,0 +1,41 @@
+# Python
+*.pyc
+*.pyo
+*.pyd
+__pycache__/
+*.sqlite3
+*.db
+
+# Environment variables
+.env
+
+# Virtual environment
+.venv/
+venv/
+env/
+env.bak/
+
+# Docker
+*.dockerignore
+Dockerfile
+docker-compose.yml
+docker-compose.override.yml
+
+# FastAPI specific
+*.log
+*.json
+storage/
+*.egg-info/
+dist/
+build/
+
+# Alembic migrations
+migrations/
+versions/
+
+# Jupyter Notebook
+.ipynb_checkpoints
+
+# Pytest
+.cache
+pytest_cache/
