@@ -22,7 +22,7 @@ from apps.libs.database.models import User
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
 
-# Функция для ожидания подключения к RabbitMQ
+
 def wait_for_rabbitmq_connection(host, port):
     while True:
         try:
@@ -32,11 +32,11 @@ def wait_for_rabbitmq_connection(host, port):
         except pika.exceptions.AMQPConnectionError:
             time.sleep(5)
 
-# Функция обратного вызова для обработки сообщений
+
 def callback(ch, method, properties, body):
     process_image_action(body)
 
-# Основная функция для запуска слушателя
+
 def start_image_listener():
     wait_for_rabbitmq_connection(core_config.rabbitmq_host, core_config.rabbitmq_port)
 
@@ -53,7 +53,7 @@ def start_image_listener():
     except KeyboardInterrupt:
         connection.close()
 
-# Функция для обработки действий с изображениями
+
 def process_image_action(body):
     data = json.loads(body)
     event_type = data['event_type']

@@ -33,8 +33,8 @@ async def upload_image(
 
     Пример запроса:
     ```
-    curl -X POST "http://localhost:8000/image/upload_image" \
-        -H "Authorization: Bearer yourAccessToken" \
+    curl -X POST "http://localhost:8000/image/upload_image"
+        -H "Authorization: Bearer yourAccessToken"
         -F "image=@path_to_your_image_file"
     ```
 
@@ -65,9 +65,9 @@ async def update_image(
 
     Пример запроса:
     ```
-    curl -X PUT "http://localhost:8000/image/update/{image_id}" \
-        -H "Authorization: Bearer yourAccessToken" \
-        -H "Content-Type: application/json" \
+    curl -X PUT "http://localhost:8000/image/update/{image_id}"
+        -H "Authorization: Bearer yourAccessToken"
+        -H "Content-Type: application/json"
         -d '{"title": "new_title.png", "resolution": "1920x1080"}'
     ```
 
@@ -97,7 +97,7 @@ async def delete_image(
 
     Пример запроса:
     ```
-    curl -X DELETE "http://localhost:8000/image/delete/{image_id}" \
+    curl -X DELETE "http://localhost:8000/image/delete/{image_id}"
         -H "Authorization: Bearer yourAccessToken"
     ```
 

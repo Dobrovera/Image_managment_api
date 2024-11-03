@@ -15,9 +15,9 @@ async def register(user_data: RegisterDto, db: Session = Depends(get_db)):
     Роут для регистрации новых юзеров.
     Пример curl-запроса:
         ```
-            curl -X POST "http://localhost:8000/auth/register" \
-             -H "Content-Type: application/json" \
-             -d '{
+            curl -X POST "http://localhost:8000/auth/register"
+            -H "Content-Type: application/json"
+            -d '{
                    "username": "testuser",
                    "password": "testpassword!"
                  }'
@@ -33,8 +33,8 @@ async def login(user_data: LoginDto, db: Session = Depends(get_db)):
 
     Пример curl-запроса:
     ```
-    curl -X POST "http://localhost:8000/auth/login" \
-     -H "Content-Type: application/json" \
+    curl -X POST "http://localhost:8000/auth/login"
+     -H "Content-Type: application/json"
      -d '{
            "username": "testuser",
            "password": "testpassword!"
