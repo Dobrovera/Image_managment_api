@@ -4,7 +4,8 @@ from sqlalchemy.orm import Session
 
 from apps.libs.auth.jwt import create_access_token
 from apps.libs.database.models import User
-from apps.main_api.routes.auth.auth_dto import RegisterDto, LoginDto
+from apps.main_api.auth.auth_dto import RegisterDto, LoginDto
+
 
 pwd_context = CryptContext(schemes=["bcrypt"], deprecated="auto")
 
@@ -18,7 +19,7 @@ def verify_password(plain_password: str, hashed_password: str):
 
 
 async def service_register(user_data: RegisterDto, db: Session):
-    existing_user = db.query(User).filter(User.username == user_data.username).first()
+    existing_user = db.query(User).filter_by(username=user_data.username).first()
     if existing_user:
         raise HTTPException(status_code=400, detail="Username already registered")
 
@@ -33,7 +34,7 @@ async def service_register(user_data: RegisterDto, db: Session):
 
 
 async def service_login(user_data: LoginDto, db: Session):
-    user = db.query(User).filter(User.username == user_data.username).first()
+    user = db.query(User).filter_by(username=user_data.username).first()
     if not user or not verify_password(user_data.password, user.hashed_password):
         raise HTTPException(status_code=400, detail="Incorrect username or password")
 
